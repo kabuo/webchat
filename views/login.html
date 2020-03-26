@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="web chat">
+
+        <title>WEB CHAT</title>
+        <!-- スタイルシート -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+        <link rel="stylesheet" type="text/css" href="/assets/chatstyle.css">
+
+        <!-- Vue.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" defer></script>
+
+        <!-- axios：HTTP通信を超簡単に行うことができるJavaScriptライブラリ -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+
+        <!-- Vueインスタンス -->
+        <script src="/assets/js/vueSingup.js" defer></script>
+        <script src="/assets/js/vueLogin.js" defer></script>
+    </head>
+	<body>
+
+		<div class="notice">
+			<a href="" class="close">close</a>
+		</div>
+
+		<!-- Primary Page Layout -->
+		<div class="container">
+			<div class="form-bg-login">
+				<form id="appLogin" class="login-form" v-on:submit.prevent="onSubmit">
+					<h2>Login</h2>
+					<p><input type="text" name="userId" v-model="userId" placeholder="User ID" v-bind:class="validate"></p>
+					<p><input type="password" name="password" v-model="password" placeholder="Password" v-bind:class="validate"></p>
+					<label class="label_errmsg" v-if="errType === 'E01'">User is not registered.</label>
+					<label class="label_errmsg" v-else-if="errType === 'E02'">Password is different.</label>
+					<label v-else></label>
+					<button v-on:click="doFindLoginUser" v-bind:disabled="isDisabled"></button>
+				<form>
+			</div>
+			<p class="forgot">Forgot your password? <a href="//localhost:8080/signup">Click here to reset it.</a></p>
+		</div>
+	</body>
+</html>

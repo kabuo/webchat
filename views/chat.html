@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="web chat">
+
+    <title>WEB CHAT</title>
+    
+    <!-- スタイルシート -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/chatstyle.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/navigation.css">
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" defer></script>
+
+    <!-- axios：HTTP通信を超簡単に行うことができるJavaScriptライブラリ -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+
+    <!-- Vueインスタンス -->
+    <script src="/assets/js/vueChatMember.js" defer></script>
+    <script src="/assets/js/vueChatHist.js" defer></script>
+  </head>
+
+<body>
+  <!-- 左パネル -->
+  <header class="leftNavigation">
+    <form id="appChatMember" v-on:submit.prevent="onSubmit">
+      <table>
+        <thead v-pre>
+          <th>トーク</th>
+        </thead>        
+        <tr v-for="item in items">
+          <td class="icon"><img src="/assets/images/charicon/b.png" class="charicon"/> {{ item.userName }}</td>
+        </tr>
+      </table>
+    </form>
+  </header>
+  <!-- 右パネル -->
+  <div class="content">
+    <form id="appChatHist" v-on:submit.prevent="onSubmit">
+      <!-- ▼LINE風ここから -->
+      <div class="line__container">
+        <!-- タイトル -->
+        <div class="line__title">{{ opUserId }}とのチャット</div>
+        <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
+        <div class="line__contents scroll">
+          <!-- 相手の吹き出し -->
+          <div class="line__left">
+            <figure><img src="/assets/images/charicon/b.png" /></figure>
+            <div class="line__left-text">
+              <div class="name">Ｂさん</div>
+              <div class="text">よろしく！</div>
+            </div>
+            <span class="date">0:25</span>
+          </div>
+          <!-- 相手のスタンプ -->
+          <div class="line__left">
+            <div class="stamp"><img src="/assets/images/stamp/1.png" /></div>
+            <span class="date">0:25</span>
+          </div>
+          <!-- 自分の吹き出し -->
+          <div class="line__right">
+            <div class="text">こちらこそ！<br>よろしくね！！</br></div>
+            <span class="date">0:30</span>
+          </div>
+          <!-- 自分のスタンプ -->
+          <div class="line__right">
+            <div class="stamp"><img src="/assets/images/stamp/3.png" /></div>
+            <span class="date">0:30</span>
+          </div>
+        </div>
+        <!-- ▲会話エリア ここまで -->
+        <!-- ▲タイトル -->
+      </div>
+      <!--　▲LINE風ここまで -->
+    </form>
+    <!-- ▼送信エリア -->
+      <input class="line__send" type="text" name="text" v-model="message" v-bind:class="message" placeholder="送信メッセージ">
+      <button class="btn-right-radius" v-on:click="doAddChatHist" v-bind:disabled="isDisabled">送信</button>
+      <!-- ▲送信エリア -->
+  </div>
+</body>
+</html>

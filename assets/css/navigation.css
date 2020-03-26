@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    min-height: 100vh;
+}
+.leftNavigation{
+    width: 250px;
+    text-align: center;
+    background-color: #888;
+    color: #fff;
+}
+.content{
+    flex: 1;
+    background-color: #eee;
+    text-align: center;
+    margin-left: 10px;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 0px;
+}
+img.charicon{
+  width: 30px;
+  height: 30px;
+}

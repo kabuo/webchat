@@ -1,0 +1,51 @@
+select * from tbl_login_users;
+select * from tbl_chat_hist;
+
+
+
+-- ログイン時のチェック取得用クエリ
+select
+*
+from (
+-- 送信メッセージ：自分
+select
+users.user_id as user_id
+, null as user_name
+, chat.send_date as send_date
+, chat.msg_str as msg_str
+, chat.msg_stmp as msg_stmp
+, chat.chk_read as true
+from
+tbl_login_users users
+inner join tbl_chat_hist chat
+on (users.user_id = chat.user_id_from)
+where
+users.user_id = 'a' -- 自分
+and chat.user_id_to = 'b' -- 相手
+
+union all
+-- 受信メッセージ：相手
+select
+users.user_id as user_id
+, users.user_name as user_name
+, chat.send_date as send_date
+, chat.msg_str as msg_str
+, chat.msg_stmp as msg_stmp
+, chat.chk_read as chk_read
+from
+tbl_login_users users
+inner join tbl_chat_hist chat
+on (users.user_id = chat.user_id_from)
+where
+users.user_id = 'b' -- 相手
+and chat.user_id_to = 'a' -- 自分
+) view
+order by
+send_date
+
+
+
+
+vue.jsのバインドをしたいときは
+「LoadHTMLGlob」じゃなくて「StaticFS」ぽい。
+htmlのtemplate使う時は「LoadHTMLGlob」じゃないとダメぽい。

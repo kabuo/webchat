@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="web chat">
+
+        <title>WEB CHAT</title>
+        <!-- スタイルシート -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+        <link rel="stylesheet" type="text/css" href="/assets/chatstyle.css">
+
+        <!-- Vue.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" defer></script>
+
+        <!-- axios：HTTP通信を超簡単に行うことができるJavaScriptライブラリ -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+
+        <!-- Vueインスタンス -->
+        <script src="/assets/js/vueSingup.js" defer></script>
+        <script src="/assets/js/vueLogin.js" defer></script>
+    </head>
+	<body>
+		<form id="appSignup" v-on:submit.prevent="onSubmit">
+			<!-- Primary Page Layout -->
+			<div class="container">
+				<div class="form-bg-signup">
+					<h2>Signup</h2>
+					<label>User ID</label><br>
+					<input type="text" name="userId" v-model="userId" v-bind:class="validate"><br>
+					<label>Password</label><br> 
+					<input type="password" name="password" v-model="password" v-bind:class="validate"><br>
+					<label>User Name</label><br>
+					<input type="text" name="userName" v-model="userName" v-bind:class="validate"><br>
+					<label>Password Confirmation</label><br>
+					<input type="password" name="passwordConfirm" v-model="passwordConfirm" v-bind:class="validate"><br>
+					<label class="label_errmsg" v-if="errType === 'E01'">Password is different.</label>
+					<label class="label_errmsg" v-else-if="errType === 'E02'">Already registered user.</label>
+					<label v-else></label>
+					<button v-on:click="doAddLoginUser" v-bind:disabled="isDisabled"></button>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="web chat">
+
+        <title>WEB CHAT</title>
+        <!-- スタイルシート -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/skeleton.css">
+        <link rel="stylesheet" type="text/css" href="/assets/chatstyle.css">
+
+        <!-- Vue.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" defer></script>
+
+        <!-- axios：HTTP通信を超簡単に行うことができるJavaScriptライブラリ -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+
+        <!-- Vueインスタンス -->
+        <script src="/assets/js/vueSingup.js" defer></script>
+        <script src="/assets/js/vueLogin.js" defer></script>
+    </head>
+    <body>
+        <div class="head">
+            <h1>Welcome to webchat.</h1>
+        </div>
+        <div class="index">
+            <p><a href="//localhost:8080/webchat/login.html">login</a></p>
+            <p><a href="//localhost:8080/webchat/signup.html">signup</a></p>
+            <p><a href="//localhost:8080/webchat/chat.html">chat</a></p>
+        </div>
+    </body>
+</html>
